@@ -9,6 +9,9 @@ export const useFetch = (url) => {
   const [method, setMethod] = useState(null);
   const [callfetch, setCalfetch] = useState(false);
 
+  // 6 - Loading 
+  const [loading, setLoading] = useState(false)
+
   const httpConfig = (data, method) => {
     if (method === "POST") {
       setConfig({
@@ -24,12 +27,17 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     const fetchData = async () => {
+
+        //6 - Loading
+        setLoading(true)
+
       //cria a resposta da api
       const res = await fetch(url);
       //transforma a resposta em um objeto json
       const json = await res.json();
       //set data recebe o obj json
       setData(json);
+      setLoading(false)
     };
     fetchData();
   }, [url, callfetch]);
@@ -47,5 +55,5 @@ export const useFetch = (url) => {
   }, [config, method, url]);
 
   //retorna os dados que vamos utilizar no app
-  return { data, httpConfig };
+  return { data, httpConfig, loading };
 };
