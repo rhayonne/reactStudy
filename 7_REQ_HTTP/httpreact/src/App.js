@@ -2,6 +2,9 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 
+// 4 - Custom hook
+import {useFetch} from './hooks/useFetch'
+
 function App() {
   const [pdt, setPdt] = useState([]);
   const [name, setName] = useState("");
@@ -9,22 +12,27 @@ function App() {
 
   const url = "http://localhost:3000/products";
 
+  //4 - Custom hook
+  const  {data : items} = useFetch(url)
+  
+
   // 1 - Resgatando dados
 
-  async function fecthData() {
-    //fazendo conexao com o BD
-    const res = await fetch(url);
+  // async function fecthData() {
+  //   //fazendo conexao com o BD
+  //   const res = await fetch(url);
 
-    //transformando os dados em obj json
-    const data = await res.json();
-    setPdt(data);
-  }
+  //   //transformando os dados em obj json
+  //   const data = await res.json();
+  //   setPdt(data);
+  // }
 
-  useEffect(() => {
-    fecthData();
-  }, []);
+  // useEffect(() => {
+  //   fecthData();
+  // }, []);
 
-  // adiçao de produtos
+  //2 - adiçao de produtos
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const product = {
@@ -52,7 +60,8 @@ function App() {
     <div className="App">
       <h1>Lista de produtos</h1>
       <ul>
-        {pdt.map((pdt) => (
+        {/* se houver item, ele vai criar o array (map) */}
+        {items && items.map((pdt) => (
           <li key={pdt.id}>
             {pdt.name} - R$: {pdt.price}{" "}
           </li>
