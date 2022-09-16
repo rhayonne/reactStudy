@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 
 // 4 - Custom hook
-import {useFetch} from './hooks/useFetch'
+import { useFetch, httpConfig } from "./hooks/useFetch";
 
 function App() {
   const [pdt, setPdt] = useState([]);
@@ -13,8 +13,7 @@ function App() {
   const url = "http://localhost:3000/products";
 
   //4 - Custom hook
-  const  {data : items} = useFetch(url)
-  
+  const { data: items, httpConfig } = useFetch(url);
 
   // 1 - Resgatando dados
 
@@ -32,26 +31,28 @@ function App() {
   // }, []);
 
   //2 - adiçao de produtos
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const product = {
       name,
       price,
     };
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(product)
-    })
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type" : "application/json"
+    //   },
+    //   body: JSON.stringify(product)
+    // })
     // 3 - Carregamento dinamico
-    const addedProduct = await res.json();
-    setPdt((prevProducts) => [...prevProducts, addedProduct]);
-    setName("")
-    setPrice("")
+    // const addedProduct = await res.json();
+    // setPdt((prevProducts) => [...prevProducts, addedProduct]);
 
+    //5 - refatorando post
+    httpConfig(pdt, "POST");
+    setName("");
+    setPrice("");
   };
 
   console.log(pdt);
@@ -61,11 +62,12 @@ function App() {
       <h1>Lista de produtos</h1>
       <ul>
         {/* se houver item, ele vai criar o array (map) */}
-        {items && items.map((pdt) => (
-          <li key={pdt.id}>
-            {pdt.name} - R$: {pdt.price}{" "}
-          </li>
-        ))}
+        {items &&
+          items.map((pdt) => (
+            <li key={pdt.id}>
+              {pdt.name} - R$: {pdt.price}{" "}
+            </li>
+          ))}
       </ul>
       <div className="add-prod">
         <form onSubmit={handleSubmit}>
