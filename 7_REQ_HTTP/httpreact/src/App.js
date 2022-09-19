@@ -13,7 +13,7 @@ function App() {
   const url = "http://localhost:3000/products";
 
   //4 - Custom hook
-  const { data: items, httpConfig, loading } = useFetch(url);
+  const { data: items, httpConfig, loading, erro } = useFetch(url);
 
   // 1 - Resgatando dados
 
@@ -54,7 +54,10 @@ function App() {
     setName("");
     setPrice("");
   };
-
+//8 - desafio 6 - removendo produto
+const handleDelete = (id) =>{
+  httpConfig(id, "DELETE");
+}
   
 
   return (
@@ -62,13 +65,16 @@ function App() {
       <h1>Lista de produtos</h1>
       {/* 6 - Loading */}
       {loading && <p>Carregando dados...</p>}
-      {!loading && (
+      {/* tendo erro deve-se exibir o erro */}
+      {erro && <p>{erro}</p>}
+      {/* se nao tiver erro exibe a ul */}
+      {!erro &&(
         <ul>
           {/* se houver item, ele vai criar o array (map) */}
           {items &&
             items.map((pd) => (
               <li key={pd.id}>
-                {pd.name} - R$: {pd.price}{" "}
+                {pd.name} - R$: {pd.price}{" "} <button type="submit" onClick={() => handleDelete(pd.id)}>Deletar</button>
               </li>
             ))}
         </ul>
