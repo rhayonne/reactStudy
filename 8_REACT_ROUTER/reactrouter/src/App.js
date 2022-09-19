@@ -10,6 +10,8 @@ import About from "./Pages/About"
 //importando os componentes
 import NavBar from "./Components/Navbar";
 import Produto from "./Components/Produto";
+import Info from "./Components/Info";
+import Nf from "./Components/Nf";
 
 
 function App() {
@@ -25,6 +27,10 @@ function App() {
           <Route path="/about" element={<About />}/>
           {/* 4 -  Rota dinamica, chamo a rota com o id do produto e utilizo o componente produto dentro do elemento */}
           <Route path="/produtos/:id" element={<Produto />} />
+          {/* 5 - Nested route */}
+          <Route path="/produtos/:id/info" element={<Info />} />
+          {/* 6 - Pagina não encontrada */}
+          <Route path="*" element={<Nf />} />
         </Routes>
       </BrowserRouter>
     </div>

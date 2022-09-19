@@ -6,7 +6,7 @@ import "./Home.css";
 
 function Home() {
   //Aula 3, carregamento de dados
-  const url = "http://localhost:3000/products";
+  const url = "http://localhost:3000/produtos";
   const { data: items, loading, erro } = useFetch(url);
   return (
     <div>
