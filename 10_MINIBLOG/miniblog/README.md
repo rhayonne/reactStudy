@@ -1,3 +1,17 @@
+# PERSONAL CREATION 
+
+# add-ons to install
+>> FIREBASE
+```npm i firebase```
+>> REACT ROUTER DOM
+``` npm i react-router-dom```
+>> 
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
