@@ -15,7 +15,7 @@ export const useFetch = (url) => {
   //Tratando erros
   const [erro, setErro] = useState(null);
 
-  //8 - desafio 6
+  //8 - Desafio 6 (Selecionando item por id)
   const [itemId, setItemId] = useState(null);
 
   const httpConfig = (data, method) => {
