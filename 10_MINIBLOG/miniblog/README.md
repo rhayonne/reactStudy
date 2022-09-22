@@ -1,11 +1,11 @@
 # PERSONAL CREATION 
 
-# add-ons to install
->> FIREBASE
+## add-ons to install
+### FIREBASE
 ```npm i firebase```
->> REACT ROUTER DOM
+### REACT ROUTER DOM
 ``` npm i react-router-dom```
->> 
+
 
 
 
