@@ -1,18 +1,33 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <nav>
-      <NavLink to="/">
+    <nav className={styles.navbar}>
+      <NavLink to="/" className={styles.brand}>
         Mini <span>Blog</span>
       </NavLink>
-      <ul>
-      <li>
-          <NavLink to="/">Home</NavLink>
+      <ul className={styles.links_list}>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.noActive
+            }
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/about">Sobre</NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.noActive
+            }
+          >
+            Sobre
+          </NavLink>
         </li>
       </ul>
     </nav>
