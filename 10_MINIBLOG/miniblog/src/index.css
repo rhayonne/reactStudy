@@ -49,7 +49,7 @@ form {
 label{
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  margin-bottom: 1em;
 
 }
 
@@ -68,7 +68,7 @@ background-color: transparent;
 }
 
 .btn {
-  background-color: 1a8918;
+  background-color: #1a8918;
   color: white;
   text-align: center;
   cursor: pointer;
@@ -107,14 +107,21 @@ background-color: transparent;
   background-color: #dc3545;
 }
 
-button[disabled]{
+button:disabled{
   background-color: #aaa;
 }
 
-.container .error {
+.container, .erro{
   color: #721c24;
-  background-color: #f8d7da;
-  border:  1 px solid #f5c6cb;
+  background-color: #426bf0;
+  border: 1px solid #f5c6cb;
   padding: 5px;
   border-radius: 5px;
-}
+  }
+/* .erro{
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 5px;
+  border-radius: 5px;
+} */
