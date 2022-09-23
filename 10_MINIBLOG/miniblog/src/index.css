@@ -1,13 +1,39 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+background-color: #f6fcff;
+padding: 0;
+margin: 0;
+font-family: "Montserrat", sans-serif;
 }
 
-code {
+imput::placeholder,
+textarea:::placeholder{
+  font-family: "Montserrat", sans-serif;
+}
+
+imput:focus,
+textarea:focus{
+  outline: none; /* retira a marcaçao de quando focamos o elemento */
+  
+}
+
+a, nav button{
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: black;
+  transition: .4s; /* Transicao em segundos para fazer o hover */
+  font-size: 1em;
+  cursor: pointer; /* vai se transformar em mao  */
+  font-family: "Moontserrat", sans-serif;
+}
+
+a:hover,
+nav button:hover{
+  color: #bbb;
+}
+
+
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */

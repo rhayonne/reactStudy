@@ -13,7 +13,7 @@ function Navbar() {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? styles.active : styles.noActive
+              isActive ? styles.active : ''
             }
           >
             Home
@@ -23,7 +23,7 @@ function Navbar() {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              isActive ? styles.active : styles.noActive
+              isActive ? styles.active : ''
             }
           >
             Sobre
