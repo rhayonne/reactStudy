@@ -1,4 +1,6 @@
+import { FirebaseError } from "firebase/app";
 import React, { useEffect, useState } from "react";
+import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./Register.module.css";
 
 function Register() {
@@ -8,21 +10,27 @@ function Register() {
   const [consfirmPasword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const { createUser, error: authError, loading } = useAuthentication();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("")
+    setError("");
+
     const user = {
       displayName,
       email,
-      password
+      password,
+    };
+    if (password !== consfirmPasword) {
+      setError("As senhas precisam ser iguais!");
+      return;
     }
-    if (password != consfirmPasword) {
-      setError("As senhas precisam ser iguais!")
-      return
-      
-    }
+
+    const res = await createUser(user);
     console.log(user);
   };
+
+  
 
   return (
     <div className={styles.register}>

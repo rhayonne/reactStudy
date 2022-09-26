@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getFirestore } from "firebase/firestore";
 
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyB0AhEueYTtRdLlHIa39lnS39y0TT2oGZY",
@@ -14,10 +15,15 @@ const firebaseConfig = {
   appId: "1:955371320569:web:d37aa279f25bd5fb451e28",
 };
 
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 //iniciando banco de dados da fireStore
 const db = getFirestore(app);
+
+
+
 
 export { db };
