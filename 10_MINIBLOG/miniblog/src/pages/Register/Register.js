@@ -27,9 +27,15 @@ function Register() {
     }
 
     const res = await createUser(user);
-    console.log(user);
+    console.log(res);
   };
 
+  useEffect(() => {
+
+    if(authError){
+      setError(authError)
+    }
+  }, [authError]) 
   
 
   return (
@@ -81,7 +87,8 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
         </label>
-        <button className="btn">Cadastrar</button>
+        {!loading && <button className="btn">Cadastrar</button>}
+        {loading && <button className="btn" disabled>Aguarde...</button> }
         {error && <p className="erro">{error}</p>}
       </form>
     </div>
